@@ -7,6 +7,8 @@ import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import Loader from "./components/Loader";
 
+import { Analytics } from "@vercel/analytics/react";
+
 // Lazy load components
 const Projects = lazy(() => import("./components/Projects"));
 const Skills = lazy(() => import("./components/Skills"));
@@ -30,6 +32,7 @@ function App() {
   return (
     <div className="bg-neutral-900 text-neutral-100 min-h-screen font-sans selection:bg-red-500/30">
       <div className="noise-overlay"></div>
+      <Analytics />
 
       <Header />
       <Analytics />
