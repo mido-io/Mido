@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import Loader from "./components/Loader";
 
-import { Analytics } from "@vercel/analytics/react";
+
 
 // Lazy load components
 const Projects = lazy(() => import("./components/Projects"));
