@@ -1,0 +1,16 @@
+:root {
+  --accent: #c44a4a;
+  --accent-hover: #E4C59E;
+
+  --text-main: #f5f5f5;
+  --text-soft: #c9c9c9;
+
+  --card-back: #2a2a2a;
+  --card-front: #ffffff;
+
+  --bg: #242424;
+
+  --btn-text: #000000;
+
+  --shadow: rgba(0, 0, 0, 0.35);
+}
