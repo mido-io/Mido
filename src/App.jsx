@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import { Analytics } from "@vercel/analytics/react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
@@ -31,6 +32,7 @@ function App() {
       <div className="noise-overlay"></div>
 
       <Header />
+      <Analytics />
       <main className="container mx-auto px-6 py-12 space-y-24">
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
