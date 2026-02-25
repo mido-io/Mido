@@ -1,22 +1,112 @@
 <!DOCTYPE html>
-<script type="text/javascript">
-    // Single Page Apps for GitHub Pages
-    // https://github.com/rafrex/spa-github-pages
-    // Copyright (c) 2016 Rafael Pedicini, licensed under the MIT License
-    // ----------------------------------------------------------------------
-    // This script takes the current url and converts the path and query
-    // string into just a query string, and then redirects the browser
-    // to the new url with only a query string and hash fragment,
-    // e.g. http://www.foo.com/bar/baz -> http://www.foo.com/?p=/bar/baz
-    // ----------------------------------------------------------------------
-    var pathSegmentsToKeep = 1;
+<html lang="en">
 
-    var l = window.location;
-    l.replace(
-        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?p=/' +
-        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-        (l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-        l.hash
-    );
-</script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Not Found</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+    <style>
+        body {
+            background-color: #000;
+            color: #1cdb4c;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .terminal {
+            width: 90%;
+            max-width: 800px;
+            background-color: #121212;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid #333;
+            padding-bottom: 2rem;
+        }
+
+        .terminal-header {
+            background-color: #222;
+            padding: 0.8rem;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .control {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .close {
+            background-color: #ff5f56;
+        }
+
+        .minimize {
+            background-color: #ffbd2e;
+        }
+
+        .maximize {
+            background-color: #27c93f;
+        }
+
+        .content {
+            padding: 0 2rem;
+        }
+
+        .error-code {
+            color: #ff5f56;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        a {
+            color: #fbca1f;
+            text-decoration: none;
+            border-bottom: 1px dashed #fbca1f;
+            padding-bottom: 2px;
+        }
+
+        a:hover {
+            color: #0f0;
+            border-bottom-color: #0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="terminal">
+        <div class="terminal-header">
+            <div class="controls">
+                <div class="control close"></div>
+                <div class="control minimize"></div>
+                <div class="control maximize"></div>
+            </div>
+            <div style="margin-left: 1rem; color: #888; font-size: 0.9rem;">~/error/404.sh</div>
+        </div>
+
+        <div class="content">
+            <p><span class="error-code">FATAL EXCEPTION [404]:</span> Directory or executable not found.</p>
+            <p style="color: #ccc;">The requested URL
+                <script>document.write(window.location.pathname)</script> was not found on this server.
+            </p>
+            <br />
+            <p>System suggests returning to safety:</p>
+            <p>> <a href="/">cd /home</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

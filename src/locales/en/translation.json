@@ -1,0 +1,226 @@
+{
+    "intro": {
+        "greeting": "Hi, I'm ",
+        "description": "I build high-converting, deeply creative web applications tailored to your business needs.",
+        "skip": "Skip Intro"
+    },
+    "dock": {
+        "about": "About",
+        "projects": "Projects",
+        "services": "Services",
+        "skills": "Skills",
+        "contact": "Contact",
+        "dev": "Dev",
+        "client": "Client"
+    },
+    "terminal": {
+        "status": "Status"
+    },
+    "projects": {
+        "devTitle": "~/projects.sh",
+        "clientTitle": "Projects",
+        "featuredDev": "Featured Projects",
+        "featuredClient": "My Portfolio",
+        "daberha": "Daberha",
+        "daberhaDesc": "Personal finance web app for tracking budgets, expenses, and financial goals in a clear and simple way",
+        "portfolio": "Hossam Abdelmalek Portfolio",
+        "portfolioDesc": "A digital portfolio for poet Hossam Abdelmalek to showcase poems, excerpts, and books with dynamic content management.",
+        "reactSkills": "React Skills Showcase",
+        "reactSkillsDesc": "Interactive demonstration of React capabilities.",
+        "liveDemo": "[Live Demo]",
+        "github": "[GitHub]",
+        "caseStudy": "Details",
+        "detailsOverview": "Overview",
+        "detailsProblem": "The Problem",
+        "detailsSolution": "The Solution",
+        "detailsShowLive": "Show Live",
+        "detailsBack": "Back to Projects",
+        "daberhaOverview": "Daberha is a comprehensive personal finance web application built to help users seamlessly track their budgets, log daily expenses, and set long-term financial goals.",
+        "daberhaProblem": "Many existing financial apps are often cluttered, overly complex, or require linking bank accounts which creates privacy concerns for average users.",
+        "daberhaSolution": "Engineered a highly intuitive, privacy-first tracker with a modern dashboard. I implemented dynamic charts for visual spending insights, robust authentication, and a scalable database architecture to handle thousands of transactions smoothly.",
+        "portfolioOverview": "A digital portfolio designed specifically for a poet to showcase poems, literary excerpts, and published books. It features a clean, minimalist design that puts the written word front and center.",
+        "portfolioProblem": "The client needed a professional online presence that allowed easy management of their poetry and writings without needing technical knowledge to update the site.",
+        "portfolioSolution": "Developed a custom Frontend integrated with a Headless CMS (like Sanity/Contentful) allowing the poet to seamlessly add new works. The UI uses typography-focused design to ensure excellent readability.",
+        "reactSkillsOverview": "An interactive showcase built with React, demonstrating various frontend capabilities and modern toolings. It focuses on clean code structure and reusable components.",
+        "reactSkillsProblem": "Many junior developers struggle to showcase their React skills effectively beyond basic counters or to-do apps. They need a comprehensive example.",
+        "reactSkillsSolution": "Created a modular portfolio-style showcase that includes complex state management, custom hooks, context API usage, and performance optimizations. It serves as both a proof of skill and a learning resource."
+    },
+    "about": {
+        "devTitle": "~/about.txt",
+        "clientTitle": "About Me",
+        "headingDev": "<Mido/>",
+        "headingClient": "Abdelhamid Farhat",
+        "description1": "I design and build modern websites that are easy to use.",
+        "description2": "Focused on clean design, strong performance, and real usability.",
+        "downloadDev": "> ./download_resume.sh",
+        "downloadClient": "Download Resume"
+    },
+    "services": {
+        "devTitle": "~/services.cfg",
+        "clientTitle": "Services",
+        "headingDev": "Services && Capabilities",
+        "headingClient": "How I Can Help You",
+        "detailsBtn": "Details",
+        "detailsBack": "Back to Services",
+        "whatIOffer": "What I offer:",
+        "whatsIncluded": "What's included:",
+        "bestFor": "Best for:",
+        "results": "Results:",
+        "service1Title": "Full Website Creation",
+        "service1Subtitle": "Complete Website From Scratch",
+        "service1Desc": "Designing and developing a complete website from scratch, tailored to your business.",
+        "service1Offer": "I design and develop a complete website tailored to your business or personal brand.",
+        "service1Included": [
+            "Understanding your goals and target audience",
+            "Designing a clean, modern UI",
+            "Developing the website from scratch",
+            "Fully responsive (mobile, tablet, desktop)",
+            "Fast loading and SEO-friendly structure",
+            "Final testing and deployment"
+        ],
+        "service1BestFor": "Businesses, startups, creators, or anyone who needs a full professional website.",
+        "service2Title": "Figma to Website",
+        "service2Subtitle": "Pixel-Perfect Design to Code",
+        "service2Desc": "Turn your existing Figma design into a fully functional, pixel-perfect website.",
+        "service2Offer": "I turn your Figma (or XD) design into a fully functional website.",
+        "service2Included": [
+            "Analyzing your design file",
+            "Writing clean, scalable code",
+            "Pixel-perfect implementation",
+            "Responsive behavior for all screens",
+            "Smooth animations and interactions",
+            "Cross-browser testing"
+        ],
+        "service2BestFor": "Designers, agencies, or clients who already have a finished design.",
+        "service3Title": "Fast & Mobile-Friendly Optimization",
+        "service3Subtitle": "Speed, Performance & UX Improvements",
+        "service3Desc": "Optimizing websites to be blazing fast and fully responsive on mobile.",
+        "service3Offer": "I optimize your website to be faster, smoother, and mobile-friendly.",
+        "service3Included": [
+            "Improving page loading speed",
+            "Optimizing images and assets",
+            "Enhancing mobile responsiveness",
+            "Better user experience (UX)",
+            "Technical SEO improvements"
+        ],
+        "service3Results": "Faster websites · Better Google rankings · Lower bounce rates",
+        "service4Title": "Custom Control Panels",
+        "service4Subtitle": "Easy Content Management",
+        "service4Desc": "Manage your site's content easily without needing a developer every time.",
+        "service4Offer": "I build a simple control panel so you can manage your content without a developer.",
+        "service4Included": [
+            "Custom dashboard design",
+            "Add / edit / delete content easily",
+            "Manage articles, images, and text",
+            "Secure access",
+            "User-friendly interface"
+        ],
+        "service4BestFor": "Blogs, writers, businesses, and content-driven websites.",
+        "service5Title": "E-Commerce Stores",
+        "service5Subtitle": "Sell Products Online Securely",
+        "service5Desc": "Sell physical or digital products online securely.",
+        "service5Offer": "A complete online store for physical or digital products.",
+        "service5Included": [
+            "Product listing and management",
+            "Shopping cart system",
+            "Secure payment integration",
+            "Order management",
+            "Mobile-friendly checkout",
+            "Performance and security setup"
+        ],
+        "service5BestFor": "Online businesses, course creators, and digital product sellers.",
+        "service6Title": "Portfolios & Personal Sites",
+        "service6Subtitle": "Showcase your work professionally online",
+        "service6Desc": "Showcase your work professionally online.",
+        "service6Offer": "I build a unique, easy-to-manage personal site to showcase your work.",
+        "service6Included": [
+            "Custom professional design",
+            "Easy content editing",
+            "Domain and hosting setup",
+            "Contact forms",
+            "SEO-ready structure"
+        ],
+        "service6BestFor": "Freelancers, artists, writers, and professionals looking for an online presence."
+    },
+    "skills": {
+        "devTitle": "~/skills.json",
+        "clientTitle": "Tech Stack",
+        "headingDev": "Tech Stack",
+        "headingClient": "Expertise",
+        "categories": {
+            "frontend": {
+                "title": "Frontend",
+                "items": [
+                    "HTML5 & CSS3",
+                    "Responsive Design",
+                    "Tailwind CSS",
+                    "JavaScript (ES6+)",
+                    "React.js",
+                    "Next.js"
+                ]
+            },
+            "stateData": {
+                "title": "State & Data",
+                "items": [
+                    "Context API",
+                    "TanStack Query (React Query)"
+                ]
+            },
+            "backend": {
+                "title": "Backend & DB",
+                "items": [
+                    "Node.js & Express",
+                    "Supabase",
+                    "Firebase",
+                    "MongoDB",
+                    "SQL Basics"
+                ]
+            },
+            "uiUx": {
+                "title": "UI / UX",
+                "items": [
+                    "UI/UX Fundamentals",
+                    "Accessibility Basics",
+                    "Figma (Design Handoff)"
+                ]
+            },
+            "tooling": {
+                "title": "Tooling & Workflow",
+                "items": [
+                    "Git & GitHub",
+                    "Version Control",
+                    "API Integration (REST)",
+                    "Environment Variables"
+                ]
+            },
+            "deployment": {
+                "title": "Deployment",
+                "items": [
+                    "Vercel",
+                    "Render"
+                ]
+            }
+        }
+    },
+    "contact": {
+        "devTitle": "~/contact.sh",
+        "clientTitle": "Contact",
+        "heading": "Get In Touch",
+        "description": "Whether you have a question or just want to say hi, I'll try my best to get back to you!",
+        "email": "Say Hello",
+        "github": "GitHub",
+        "instagram": "Instagram",
+        "namePlaceholder": "Your Name",
+        "emailPlaceholder": "Your Email",
+        "messagePlaceholder": "Your Message",
+        "sendButton": "Send Message",
+        "devDetailsTitle": "Contact Details",
+        "devEmailLabel": "Email:",
+        "devGithubLabel": "GitHub:",
+        "devInstaLabel": "Insta:",
+        "devFormTitle": "Form",
+        "devNameLabel": "Name:",
+        "devMessageLabel": "Message:",
+        "devExecuteBtn": "> EXECUTE"
+    }
+}

@@ -1,0 +1,131 @@
+.desktop-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    padding: 2rem;
+    padding-bottom: 2rem;
+    box-sizing: border-box;
+}
+
+.window-area {
+    width: 100%;
+    max-width: 900px;
+    height: 70vh;
+    /* Fixed height for the main window */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* We'll use absolute positioning for smooth window transitions */
+    position: relative;
+    /* margin-bottom handles space between window and dock */
+    margin-bottom: 5rem;
+}
+
+/* 
+  We use Framer Motion for the exit/enter animations, 
+  but the wrapper ensures they stack exactly on top of each other during transition.
+*/
+.window-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+/* =========================================
+   DOCK STYLES
+   ========================================= */
+.os-dock {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(18, 18, 18, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid #333;
+    padding: 0.8rem 1.5rem;
+    border-radius: 20px;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.dock-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: #888;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    outline: none;
+    padding: 0;
+}
+
+.dock-icon svg {
+    font-size: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.dock-icon span {
+    font-size: 0.75rem;
+    font-family: 'Courier New', Courier, monospace;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.dock-icon:hover {
+    color: #fbca1f;
+}
+
+.dock-icon:hover svg {
+    transform: scale(1.2) translateY(-5px);
+}
+
+.dock-icon:hover span {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dock-icon.active {
+    color: #1cdb4c;
+}
+
+.dock-icon.active svg {
+    transform: scale(1.1);
+}
+
+.dock-icon.active span {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mobile responsive fallback */
+@media (max-width: 768px) {
+    .window-area {
+        height: 75vh;
+        margin-bottom: 6rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .desktop-container {
+        padding: 1rem;
+    }
+
+    .window-area {
+        height: 78vh;
+        margin-bottom: 5rem;
+    }
+}

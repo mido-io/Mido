@@ -1,44 +1,178 @@
-@import "./styles/variables.css";
+/* Base Variables */
+:root {
+    --font-mono: "Courier New", Courier, monospace;
+    --font-arabic: "IBM Plex Sans Arabic", system-ui, -apple-system, sans-serif;
+    --font-inter: "Inter", system-ui, -apple-system, sans-serif;
+}
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html,
-body {
-  height: 100%;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
 }
 
 body {
-  min-height: 100vh;
-  background-color: var(--bg);
-  color: var(--text-main);
-  font-family: "Fira Code", monospace;
-  overflow-x: hidden;
+    background-color: #000;
+    color: #eee;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Default to monospace for Dev Mode vibes */
+    font-family: var(--font-mono);
 }
 
-/* Global Tap Feedback for Mobile */
-button:active,
-a:active {
-  transform: scale(0.96);
+/* Ensure form elements inherit the font */
+input,
+textarea,
+select,
+button {
+    font-family: inherit;
 }
 
+/* Custom properties for Arabic text to prevent bad letter-spacing */
+[dir="rtl"] {
+    letter-spacing: 0 !important;
+    line-height: 1.8;
+}
+
+/* Client Mode Typography */
+body.client-mode {
+    font-family: var(--font-inter);
+}
+
+body.client-mode[dir="rtl"] {
+    font-family: var(--font-arabic);
+}
+
+/* Base link reset */
 a {
-  text-decoration: none;
-  color: inherit;
+    color: inherit;
+    text-decoration: none;
 }
 
-/* Visual Texture */
-.noise-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.5'/%3E%3C/svg%3E");
+/* Global Responsive Adjustments */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .business-header {
+        display: none !important;
+    }
+
+    .os-dock {
+        /* App-like bottom navigation tabs */
+        flex-wrap: nowrap !important;
+        justify-content: space-around !important;
+        width: 100% !important;
+        padding: 0.8rem 0.5rem 1.5rem 0.5rem !important;
+        /* Extra bottom padding for safe area */
+        bottom: 0 !important;
+        border-radius: 20px 20px 0 0 !important;
+        border-bottom: none !important;
+        border-left: none !important;
+        border-right: none !important;
+        background: rgba(18, 18, 18, 0.9) !important;
+    }
+
+    .dock-icon {
+        width: auto !important;
+        height: auto !important;
+        font-size: 1.2rem !important;
+    }
+
+    .dock-icon span {
+        display: none !important;
+        /* Hide text under inactive tabs on mobile */
+    }
+
+    .dock-icon.active span {
+        display: block !important;
+        /* Show text under active tabs on mobile */
+        opacity: 1 !important;
+        transform: none !important;
+        margin-top: 4px;
+        font-size: 0.65rem !important;
+    }
+
+    /* Terminal Window scaling */
+    .terminal-box {
+        padding: 3.5em 1em 1em 1em !important;
+        font-size: 1em !important;
+    }
+}
+
+/* Extra small screens under 400px */
+@media (max-width: 400px) {
+    body {
+        font-size: 13px;
+    }
+
+    .dock-icon svg {
+        font-size: 1.2rem !important;
+    }
+
+    .dock-icon {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+    }
+
+    .terminal-box {
+        padding: 3.2em 0.8em 0.8em 0.8em !important;
+        font-size: 0.9em !important;
+    }
+}
+
+/* Custom Scrollbars */
+.custom-scrollbar-dev::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.custom-scrollbar-dev::-webkit-scrollbar-track {
+    background: #111;
+    border-radius: 4px;
+}
+
+.custom-scrollbar-dev::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+.custom-scrollbar-dev::-webkit-scrollbar-thumb:hover {
+    background: #0f0;
+}
+
+.custom-scrollbar-client::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.custom-scrollbar-client::-webkit-scrollbar-track {
+    background: #f5f5f7;
+    border-radius: 4px;
+}
+
+.custom-scrollbar-client::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.custom-scrollbar-client::-webkit-scrollbar-thumb:hover {
+    background: #007aff;
+}
+
+/* Dev Mode Layout Utils */
+.contact-dev-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    width: 100%;
+}
+
+@media (max-width: 650px) {
+    .contact-dev-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
 }

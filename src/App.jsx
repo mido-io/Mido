@@ -1,88 +1,70 @@
-import { lazy, Suspense } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
 import { Analytics } from "@vercel/analytics/react";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import { useState, useEffect } from "react";
+import { Suspense, lazy } from "react";
 import Hero from "./components/Hero";
-import Loader from "./components/Loader";
+import CustomCursor from "./components/CustomCursor";
+import IntroModal from "./components/IntroModal";
+import BusinessHeader from "./components/BusinessHeader";
 
+const ParticleBackground = lazy(() => import("./components/ParticleBackground"));
+const AuroraBackground = lazy(() => import("./components/AuroraBackground"));
 
+function usePrefersReducedMotion() {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
-// Lazy load components
-const Projects = lazy(() => import("./components/Projects"));
-const Skills = lazy(() => import("./components/Skills"));
-const Services = lazy(() => import("./components/Services"));
-const Contact = lazy(() => import("./components/Contact"));
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mediaQuery.matches);
+    const listener = (event) => setPrefersReducedMotion(event.matches);
+    mediaQuery.addEventListener("change", listener);
+    return () => mediaQuery.removeEventListener("change", listener);
+  }, []);
 
-const PageTransition = ({ children }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-    exit={{ opacity: 0, y: -20, filter: "blur(10px)" }}
-    transition={{ duration: 0.4, ease: "easeOut" }}
-  >
-    {children}
-  </motion.div>
-);
+  return prefersReducedMotion;
+}
 
 function App() {
-  const location = useLocation();
+  const [introStarted, setIntroStarted] = useState(true);
+  const [isDevMode, setIsDevMode] = useState(false);
+  const prefersReducedMotion = usePrefersReducedMotion();
+
+  // Watch for language changes to update RTL layout and global fonts natively
+  useEffect(() => {
+    const handleLanguageChange = () => {
+      const currentLang = window.localStorage.getItem('i18nextLng') || navigator.language.split('-')[0];
+      const isArabic = currentLang.startsWith('ar');
+      document.documentElement.dir = isArabic ? 'rtl' : 'ltr';
+      document.documentElement.lang = isArabic ? 'ar' : 'en';
+
+      if (isArabic) {
+        document.documentElement.style.setProperty('--font-family', "'Cairo', sans-serif");
+      } else {
+        document.documentElement.style.removeProperty('--font-family');
+      }
+    };
+
+    handleLanguageChange();
+    window.addEventListener('storage', handleLanguageChange);
+    return () => window.removeEventListener('storage', handleLanguageChange);
+  }, []);
 
   return (
-    <div className="bg-neutral-900 text-neutral-100 min-h-screen font-sans selection:bg-red-500/30">
-      <div className="noise-overlay"></div>
-      <Analytics />
+    <>
+      {!prefersReducedMotion && (isDevMode ? <CustomCursor /> : null)}
+      <Suspense fallback={null}>
+        {!prefersReducedMotion && (isDevMode ? <ParticleBackground /> : <AuroraBackground />)}
+      </Suspense>
 
-      <Header />
+      {/* Persistent Business Branding when not in dev mode */}
+      {!introStarted && !isDevMode && <BusinessHeader />}
+
+      {introStarted && <IntroModal onComplete={() => setIntroStarted(false)} />}
+
+      {/* Make sure Hero only mounts/starts animation after intro is done */}
+      {!introStarted && <Hero isDevMode={isDevMode} setIsDevMode={setIsDevMode} />}
+
       <Analytics />
-      <main className="container mx-auto px-6 py-12 space-y-24">
-        <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={
-              <PageTransition>
-                <Hero />
-                <Suspense fallback={<Loader />}>
-                  <Projects />
-                  <Services />
-                  <Skills />
-                  <Contact />
-                </Suspense>
-              </PageTransition>
-            } />
-            <Route path="/projects" element={
-              <PageTransition>
-                <Suspense fallback={<Loader />}>
-                  <Projects />
-                </Suspense>
-              </PageTransition>
-            } />
-            <Route path="/skills" element={
-              <PageTransition>
-                <Suspense fallback={<Loader />}>
-                  <Skills />
-                </Suspense>
-              </PageTransition>
-            } />
-            <Route path="/services" element={
-              <PageTransition>
-                <Suspense fallback={<Loader />}>
-                  <Services />
-                </Suspense>
-              </PageTransition>
-            } />
-            <Route path="/contact" element={
-              <PageTransition>
-                <Suspense fallback={<Loader />}>
-                  <Contact />
-                </Suspense>
-              </PageTransition>
-            } />
-          </Routes>
-        </AnimatePresence>
-      </main>
-      <Footer />
-    </div>
+    </>
   );
 }
 
