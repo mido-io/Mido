@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import TerminalBox from '../TerminalBox';
 
 const AboutTab = ({ isDevMode }) => {
     const { t } = useTranslation();
+    const [isDownloading, setIsDownloading] = useState(false);
+    const cvFilePath = '/Abdlehamid%20Farhat%20-%20cv.pdf';
+
+    const handleDownloadCv = () => {
+        if (isDownloading) {
+            return;
+        }
+
+        setIsDownloading(true);
+
+        const link = document.createElement('a');
+        link.href = cvFilePath;
+        link.download = 'Abdlehamid Farhat - cv.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        // Lightweight loading feedback while download is being initiated by the browser
+        window.setTimeout(() => setIsDownloading(false), 1200);
+    };
 
     return (
         <TerminalBox title={isDevMode ? t('about.devTitle') : t('about.clientTitle')} isActive={true} isDevMode={isDevMode}>
@@ -19,9 +39,20 @@ const AboutTab = ({ isDevMode }) => {
                             </p>
                         </li>
                         <li style={{ marginTop: 'auto', paddingTop: '1.5rem', borderTop: '1px dashed #333' }}>
-                            <a href="/resume.pdf" download style={{ padding: 'clamp(0.6rem, 2vw, 0.8rem) clamp(1rem, 3vw, 1.5rem)', backgroundColor: '#0f0', color: '#000', border: 'none', cursor: 'pointer', fontFamily: 'monospace', fontWeight: 'bold', fontSize: 'clamp(0.9rem, 3vw, 1.1rem)', display: 'inline-block', textDecoration: 'none' }} onMouseEnter={(e) => e.target.style.backgroundColor = '#1cdb4c'} onMouseLeave={(e) => e.target.style.backgroundColor = '#0f0'}>
-                                download_resume.sh
-                            </a>
+                            <button
+                                type="button"
+                                onClick={handleDownloadCv}
+                                disabled={isDownloading}
+                                style={{ padding: 'clamp(0.6rem, 2vw, 0.8rem) clamp(1rem, 3vw, 1.5rem)', backgroundColor: '#0f0', color: '#000', border: 'none', cursor: isDownloading ? 'wait' : 'pointer', fontFamily: 'monospace', fontWeight: 'bold', fontSize: 'clamp(0.9rem, 3vw, 1.1rem)', display: 'inline-block', textDecoration: 'none', opacity: isDownloading ? 0.8 : 1 }}
+                                onMouseEnter={(e) => {
+                                    if (!isDownloading) e.currentTarget.style.backgroundColor = '#1cdb4c';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.backgroundColor = '#0f0';
+                                }}
+                            >
+                                {isDownloading ? 'downloading_cv...' : 'download_resume.sh'}
+                            </button>
                         </li>
                     </ul>
                 ) : (
@@ -50,9 +81,14 @@ const AboutTab = ({ isDevMode }) => {
                                 {t('about.description2')}
                             </p>
                             <div style={{ paddingTop: '1.5rem', borderTop: '1px solid #e5e5ea' }}>
-                                <a href="/resume.pdf" download style={{ color: '#000', backgroundColor: '#fff', border: '1px solid #e5e5ea', padding: '0.6rem 1.2rem', textDecoration: 'none', fontWeight: 'bold', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', borderRadius: '8px', boxShadow: '0 2px 5px rgba(0,0,0,0.05)', cursor: 'pointer' }}>
-                                    {t('about.downloadClient')}
-                                </a>
+                                <button
+                                    type="button"
+                                    onClick={handleDownloadCv}
+                                    disabled={isDownloading}
+                                    style={{ color: '#000', backgroundColor: '#fff', border: '1px solid #e5e5ea', padding: '0.6rem 1.2rem', textDecoration: 'none', fontWeight: 'bold', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', borderRadius: '8px', boxShadow: '0 2px 5px rgba(0,0,0,0.05)', cursor: isDownloading ? 'wait' : 'pointer', opacity: isDownloading ? 0.7 : 1 }}
+                                >
+                                    {isDownloading ? 'Downloading...' : t('about.downloadClient')}
+                                </button>
                             </div>
                         </div>
                     </div>
