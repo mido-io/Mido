@@ -26,33 +26,35 @@ const Navbar = () => {
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm safe-top">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center py-4 lg:py-5 mx-auto c-space">
-          <a
-            href="#home"
-            className="text-white-800 font-bold text-xl tracking-wide hover:text-white transition-colors"
-            onClick={closeMenu}
-          >
-            {profile.displayName}.
-          </a>
+    <>
+      <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm safe-top">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex justify-between items-center py-4 lg:py-5 mx-auto c-space">
+            <a
+              href="#home"
+              className="text-white-800 font-bold text-xl tracking-wide hover:text-white transition-colors"
+              onClick={closeMenu}
+            >
+              {profile.displayName}.
+            </a>
 
-          <button
-            type="button"
-            onClick={toggleMenu}
-            className="text-white-800 hover:text-white lg:hidden flex items-center justify-center min-w-11 min-h-11 -mr-2"
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isOpen}
-            aria-controls="mobile-nav"
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+            <button
+              type="button"
+              onClick={toggleMenu}
+              className="text-white-800 hover:text-white lg:hidden flex items-center justify-center min-w-11 min-h-11 -mr-2"
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isOpen}
+              aria-controls="mobile-nav"
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
 
-          <nav className="hidden lg:flex" aria-label="Main navigation">
-            <NavItems />
-          </nav>
+            <nav className="hidden lg:flex" aria-label="Main navigation">
+              <NavItems />
+            </nav>
+          </div>
         </div>
-      </div>
+      </header>
 
       {isOpen ? (
         <>
@@ -69,7 +71,7 @@ const Navbar = () => {
           </div>
         </>
       ) : null}
-    </header>
+    </>
   );
 };
 
