@@ -11,12 +11,13 @@ export default defineConfig({
         manualChunks(id) {
           if (!id.includes('node_modules')) return undefined;
 
-          if (id.includes('three') || id.includes('@react-three')) {
+          if (
+            id.includes('three') ||
+            id.includes('@react-three') ||
+            id.includes('react-globe.gl') ||
+            id.includes('three-globe')
+          ) {
             return 'three-vendor';
-          }
-
-          if (id.includes('react-globe.gl') || id.includes('three-globe')) {
-            return 'globe-vendor';
           }
 
           if (id.includes('gsap')) {
