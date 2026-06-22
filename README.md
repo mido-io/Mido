@@ -1,41 +1,45 @@
-#  &lt;Mido /&gt; - Personal Portfolio
+# Mido — Personal Portfolio
 
-A unique, highly interactive developer portfolio built with React. It features a dual-mode interface: a clean, "Mac-like" Client Mode for non-technical visitors, and a hacker-style Dev Mode terminal for developers.
+A minimal, professional developer portfolio built with React and Three.js. Features a custom 3D hero model, interactive project showcase, and a clean dark aesthetic.
 
 **Live Demo:** [mido-io.vercel.app](https://mido-io.vercel.app/)
 
 ---
 
-### Client Mode
-![Client Mode Preview](./public/projects-images/Mido%20hero%20(client%20mode).png)
+## Tech Stack
 
-### Dev Mode
-![Dev Mode Preview](./public/projects-images/Mido%20hero%20(dev%20mode).png)
-
----
-
-## 🛠️ Tech Stack
-- **Framework:** React + Vite
-- **Styling:** CSS & Framer Motion (for animations)
-- **3D Interactive Background:** Three.js
-- **Internationalization:** i18next (English & Arabic)
+- **Framework:** React 19 + Vite 7
+- **Styling:** Tailwind CSS v4
+- **3D:** Three.js, React Three Fiber, Drei
+- **Animation:** GSAP
+- **Contact:** Formspree
 - **Deployment:** Vercel
 
-## 💻 Local Development
+## Sections
+
+- **Hero** — Custom 3D model with studio lighting
+- **About** — Bento grid with globe and contact details
+- **Projects** — 3D computer with video demo textures
+- **Experience** — Work timeline
+- **Contact** — Formspree-powered contact form
+
+## Local Development
 
 ```bash
-# Clone the repository
 git clone https://github.com/mido-io/Mido.git
-
-# Navigate to directory
 cd Mido
-
-# Install dependencies
 npm install
-
-# Start the development server
 npm run dev
 ```
 
+## Content
+
+Edit [`src/constants/profile.js`](src/constants/profile.js) for your name, email, socials, and location. Update projects and experience in [`src/constants/index.js`](src/constants/index.js).
+
+## Legacy UI
+
+The previous dual-mode terminal portfolio lives in [`src/_legacy/`](src/_legacy/) for reference. It is not mounted in the current app.
+
 ---
-*Built by [Mido](https://github.com/mido-io).*
+
+Built by [Mido](https://github.com/mido-io).

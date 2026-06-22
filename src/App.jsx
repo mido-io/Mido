@@ -1,67 +1,34 @@
 import { Analytics } from "@vercel/analytics/react";
-import { useState, useEffect } from "react";
-import { Suspense, lazy } from "react";
-import Hero from "./components/Hero";
-import CustomCursor from "./components/CustomCursor";
-import IntroModal from "./components/IntroModal";
-import BusinessHeader from "./components/BusinessHeader";
+import { lazy, Suspense } from 'react';
 
-const ParticleBackground = lazy(() => import("./components/ParticleBackground"));
-const AuroraBackground = lazy(() => import("./components/AuroraBackground"));
+import Navbar from './components/sections/Navbar';
+import Hero from './components/sections/Hero';
+import Experience from './components/sections/Experience';
+import Contact from './components/sections/Contact';
+import Footer from './components/sections/Footer';
+import Clients from './components/sections/Clients';
+import SectionFallback from './components/SectionFallback.jsx';
 
-function usePrefersReducedMotion() {
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
-    const listener = (event) => setPrefersReducedMotion(event.matches);
-    mediaQuery.addEventListener("change", listener);
-    return () => mediaQuery.removeEventListener("change", listener);
-  }, []);
-
-  return prefersReducedMotion;
-}
+const About = lazy(() => import('./components/sections/About'));
+const Projects = lazy(() => import('./components/sections/Projects'));
 
 function App() {
-  const [introStarted, setIntroStarted] = useState(true);
-  const [isDevMode, setIsDevMode] = useState(false);
-  const prefersReducedMotion = usePrefersReducedMotion();
-
-  // Watch for language changes to update RTL layout and global fonts natively
-  useEffect(() => {
-    const handleLanguageChange = () => {
-      const currentLang = window.localStorage.getItem('i18nextLng') || navigator.language.split('-')[0];
-      const isArabic = currentLang.startsWith('ar');
-      document.documentElement.dir = isArabic ? 'rtl' : 'ltr';
-      document.documentElement.lang = isArabic ? 'ar' : 'en';
-
-      if (isArabic) {
-        document.documentElement.style.setProperty('--font-family', "'Cairo', sans-serif");
-      } else {
-        document.documentElement.style.removeProperty('--font-family');
-      }
-    };
-
-    handleLanguageChange();
-    window.addEventListener('storage', handleLanguageChange);
-    return () => window.removeEventListener('storage', handleLanguageChange);
-  }, []);
-
   return (
     <>
-      {!prefersReducedMotion && (isDevMode ? <CustomCursor /> : null)}
-      <Suspense fallback={null}>
-        {!prefersReducedMotion && (isDevMode ? <ParticleBackground /> : <AuroraBackground />)}
-      </Suspense>
-
-      {/* Persistent Business Branding when not in dev mode */}
-      {!introStarted && !isDevMode && <BusinessHeader />}
-
-      {introStarted && <IntroModal onComplete={() => setIntroStarted(false)} />}
-
-      {/* Make sure Hero only mounts/starts animation after intro is done */}
-      {!introStarted && <Hero isDevMode={isDevMode} setIsDevMode={setIsDevMode} />}
+      <main className="max-w-7xl mx-auto overflow-x-hidden">
+        <Navbar />
+        <Hero />
+        <Suspense fallback={<SectionFallback label="Loading about section…" />}>
+          <About />
+        </Suspense>
+        <Suspense fallback={<SectionFallback label="Loading projects section…" />}>
+          <Projects />
+        </Suspense>
+        <Experience />
+        <Clients />
+        <Contact />
+        <Footer />
+      </main>
 
       <Analytics />
     </>
